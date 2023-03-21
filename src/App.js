@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+// import NavBar from './Components/NavBar';
+import Home from './Screens/Home';
+import '../node_modules/bootstrap-dark-5/dist/css/bootstrap-dark.min.css';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle';
+import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js';
+import{
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  
+} from "react-router-dom";
+import Login from './Screens/Login';
+import SignUp from './Screens/SignUp';
+import { CartProvider } from './Components/ContexReducer';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <CartProvider>
+    <Router>
+     <div>
+      <Routes>
+        <Route exact path='/' element={<Home/>}/>
+        <Route exact path='/login' element={<Login/>}/>
+        <Route exact path='/createuser' element={<SignUp/>}/>
+      </Routes>
+
+    {/* <div className='fs-1'>Hello world</div> */}
     </div>
+    </Router>
+    </CartProvider>
   );
 }
 
